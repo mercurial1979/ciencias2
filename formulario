@@ -1,107 +1,14 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class FormularioEstudiante extends JFrame {
-    private JTextField txtCodigo, txtNombre, txtApellidos, txtTrabajos, txtExamen, txtProyecto;
-    private JButton btnGuardar, btnBorrar, btnSalir;
-
-    public FormularioEstudiante() {
-        setTitle("Formulario de Estudiante");
-        setSize(400, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setLayout(new GridLayout(8, 2));
-
-        // Crear componentes
-        JLabel lblCodigo = new JLabel("Código:");
-        txtCodigo = new JTextField();
-        JLabel lblNombre = new JLabel("Nombre:");
-        txtNombre = new JTextField();
-        JLabel lblApellidos = new JLabel("Apellidos:");
-        txtApellidos = new JTextField();
-        JLabel lblTrabajos = new JLabel("Trabajos:");
-        txtTrabajos = new JTextField();
-        JLabel lblExamen = new JLabel("Examen:");
-        txtExamen = new JTextField();
-        JLabel lblProyecto = new JLabel("Proyecto:");
-        txtProyecto = new JTextField();
-
-        btnGuardar = new JButton("Guardar");
-        btnBorrar = new JButton("Borrar");
-        btnSalir = new JButton("Salir");
-
-        // Agregar componentes al formulario
-        add(lblCodigo);
-        add(txtCodigo);
-        add(lblNombre);
-        add(txtNombre);
-        add(lblApellidos);
-        add(txtApellidos);
-        add(lblTrabajos);
-        add(txtTrabajos);
-        add(lblExamen);
-        add(txtExamen);
-        add(lblProyecto);
-        add(txtProyecto);
-
-        add(btnGuardar);
-        add(btnBorrar);
-        add(new JLabel(""));  // Espacio vacío
-        add(btnSalir);
-
-        // Añadir acciones a los botones
-        btnGuardar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Código para guardar los datos
-                String codigo = txtCodigo.getText();
-                String nombre = txtNombre.getText();
-                String apellidos = txtApellidos.getText();
-                String trabajos = txtTrabajos.getText();
-                String examen = txtExamen.getText();
-                String proyecto = txtProyecto.getText();
-
-                // Aquí podrías agregar código para guardar estos datos en una base de datos o archivo
-                JOptionPane.showMessageDialog(null, "Datos guardados:\n" + 
-                        "Código: " + codigo + "\n" +
-                        "Nombre: " + nombre + "\n" +
-                        "Apellidos: " + apellidos + "\n" +
-                        "Trabajos: " + trabajos + "\n" +
-                        "Examen: " + examen + "\n" +
-                        "Proyecto: " + proyecto);
-            }
-        });
-
-        btnBorrar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Limpiar todos los campos
-                txtCodigo.setText("");
-                txtNombre.setText("");
-                txtApellidos.setText("");
-                txtTrabajos.setText("");
-                txtExamen.setText("");
-                txtProyecto.setText("");
-            }
-        });
-
-        btnSalir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Cerrar la aplicación
-                System.exit(0);
-            }
-        });
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new FormularioEstudiante().setVisible(true);
-            }
-        });
-    }
-}
+<html>
+<body>
+    <form action="GuardarEstudianteServlet" method="post">
+        Código: <input type="text" name="codigo"><br>
+        Nombre: <input type="text" name="nombre"><br>
+        Apellidos: <input type="text" name="apellidos"><br>
+        Trabajos: <input type="text" name="trabajos"><br>
+        Examen: <input type="text" name="examen"><br>
+        Proyecto: <input type="text" name="proyecto"><br>
+        <input type="submit" value="Guardar">
+        <input type="reset" value="Borrar">
+    </form>
+</body>
+</html>
